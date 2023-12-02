@@ -30,4 +30,14 @@ mutation createBook($title: String!, $author: String!, $published: Int!, $genres
       title
     }
   }
+`
+export const MODIFY_AUTHOR_BORN = gql`
+  mutation modifyAuthorBorn($name: String!, $setBornTo: Int!) {
+    editAuthor(name: $name, setBornTo: $setBornTo) {
+      name
+      id
+      born
+      bookCount
+    }
+  }
 `;
