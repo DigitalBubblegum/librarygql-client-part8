@@ -11,10 +11,14 @@ const Authors = () => {
     const submit = (event) => {
         event.preventDefault()
         console.log('submitted')
+        console.log(event.target[0].value)
+        setName(event.target[0].value)
+        // console.log(name)
         const content = {
-            name: name,
+            name: event.target[0].value,
             setBornTo: parseInt(birth)
         }
+        console.log(content)
         modifyAuthorBorn({variables:content})
         setName('')
         setBirth('')
@@ -50,9 +54,12 @@ const Authors = () => {
         </table>
         <h2>Set BirthYear</h2>
         <form onSubmit={submit}>
-            <div>
+            {/* <div>
                 Author name <input value={name} placeholder='enter a valid author' onChange={({target})=>setName(target.value)}/>
-            </div>
+            </div> */}
+            <select>
+                {authors.map(author => <option key={author.id} value={author.name}>{author.name}</option>)}
+            </select>
             <div>
                 Author Birth Year<input value={birth} onChange={({target})=>setBirth(target.value)}/>
             </div>
