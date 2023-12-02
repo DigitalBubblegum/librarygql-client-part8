@@ -1,20 +1,12 @@
-import Authors from './components/Authors'
-import { useQuery } from '@apollo/client'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import { ALL_AUTHORS } from './queries'
 import Home from './components/Home'
-
+import Authors from './components/Authors'
+import Books from './components/Books'
 const padding = {
     padding: 5
   }
 
 function App() {
-  const result = useQuery(ALL_AUTHORS)
-  if (result.loading) {
-        return <div>loading...</div>
-    }
-  console.log('in app compo',result.data)
-  
   return (
     <>
       <Router>
@@ -26,7 +18,8 @@ function App() {
         </div>
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/authors' element={<Authors result={result}/>}/>
+          <Route path='/authors' element={<Authors/>}/>
+          <Route path='/books' element={<Books/>}/>
         </Routes>
       </Router>
       {/* <Authors result={result}/> */}

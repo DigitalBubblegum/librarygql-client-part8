@@ -5,6 +5,19 @@ query {
     name
     born
     bookCount
+    id
+  }
+}
+`
+
+export const ALL_BOOKS = gql`
+query{
+  allBooks{
+    author
+    published
+    genres
+    title
+    id
   }
 }
 `
