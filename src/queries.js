@@ -9,6 +9,11 @@ query {
   }
 }
 `
+export const GET_ALL_BOOK_GENRES = gql`
+  query {
+    genreList
+  }
+`;
 
 export const ALL_BOOKS = gql`
 query{

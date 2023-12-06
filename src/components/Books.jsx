@@ -1,28 +1,18 @@
 import { useQuery } from '@apollo/client'
-import { ALL_BOOKS } from '../queries'
+import { ALL_BOOKS,GET_ALL_BOOK_GENRES } from '../queries'
 import { useState } from 'react'
 
 const Books = () => {
     const [booksFilter, setBooksFilter] = useState('all')
     const result = useQuery(ALL_BOOKS)
+    const fetchGenre = useQuery(GET_ALL_BOOK_GENRES)
+    console.log(fetchGenre)
     if (result.loading) {
         return <div>loading...</div>
     }
-    const genreList = []
+    const genreList = fetchGenre.data.genreList
     // console.log(result.data)
     const books = result.data.allBooks
-    // console.log(books.map(book=>book.genres))
-    books.map(book => {
-        book.genres.forEach(element => {
-            if (genreList.includes(element)) {
-                null
-            }
-            else{
-                genreList.push(element)
-            }
-        })
-    })
-    // console.log(genreList)
     const filterBooksList = () =>{
         const reccoBooks = books.filter(book=>book.genres.includes(booksFilter))
         return (
