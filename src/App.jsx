@@ -6,6 +6,7 @@ import Authors from './components/Authors'
 import Books from './components/Books'
 import AddBook from './components/AddBook'
 import LoginForm from './components/LoginForm'
+import Reccomendations from './components/Reccomendations'
 
 const padding = {
     padding: 5
@@ -28,13 +29,13 @@ function App() {
           <Link style={padding} to={'/'}>Home</Link>
           <Link style={padding} to={'/authors'}>Authors</Link>
           <Link style={padding} to={'/books'}>Books</Link>
-          {token === null?<Link style={padding} to={'/login'}>Login</Link>:<><Link style={padding} to={'/addBook'}>Add Book</Link> <button onClick={logout}>logout</button></>}
+          {token === null ? <Link style={padding} to={'/login'}>Login</Link>:<><Link style={padding} to={'/addBook'}>Add Book</Link><Link style={padding} to={'/reccomendations'}>Reccomendations</Link><button onClick={logout}>logout</button></>}
         </div>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/authors' element={<Authors/>}/>
           <Route path='/books' element={<Books/>}/>
-          {token === null?<Route path='/login' element={<LoginForm setToken={setToken}/>}/>:<Route path='/addBook' element={<AddBook/>}/>}
+          {token === null?<Route path='/login' element={<LoginForm setToken={setToken}/>}/>:<><Route path='/addBook' element={<AddBook/>}/><Route path='/reccomendations' element={<Reccomendations/>}/></>}
         </Routes>
       </Router>
     </>
