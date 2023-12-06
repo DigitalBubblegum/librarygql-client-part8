@@ -4,6 +4,7 @@ import { ALL_AUTHORS, MODIFY_AUTHOR_BORN } from '../queries'
 
 const Authors = () => {
     const result = useQuery(ALL_AUTHORS)
+    // console.log('in authors',result)
     const [name, setName] = useState('')
     const [birth, setBirth] = useState('')
 
