@@ -1,15 +1,17 @@
 import { useState } from 'react'
 import { useQuery } from '@apollo/client'
-import { USER_INFO,ALL_BOOKS } from '../queries'
+import { USER_INFO,ALL_BOOKS,GET_ALL_BOOK_RECCOMENDATIONS } from '../queries'
 const Reccomendations = () => {
     const genre = useQuery(USER_INFO)
     const books = useQuery(ALL_BOOKS)
-    const reccoBooks = books.data.allBooks.filter(book=>book.genres.includes(genre.data.me.favoriteGenre))
-    console.log(reccoBooks)
-    if (genre.loading) {
+    const reccomendations = useQuery(GET_ALL_BOOK_RECCOMENDATIONS)
+    if (genre.loading||books.loading||reccomendations.loading) {
         return <div>loading...</div>
     }
-    console.log(genre.data.me.favoriteGenre)
+    // console.log('in reccom compo',reccomendations.data.reccoBooks)///here
+    const reccoBooks = reccomendations.data.reccoBooks
+    console.log(reccoBooks)
+    // console.log(genre.data.me.favoriteGenre)
     return(
     <div>
         <h1>Reccomendations</h1>

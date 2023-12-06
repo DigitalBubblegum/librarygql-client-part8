@@ -13,6 +13,23 @@ export const GET_ALL_BOOK_GENRES = gql`
   query {
     genreList
   }
+`
+
+export const GET_ALL_BOOK_RECCOMENDATIONS = gql`
+  query {
+    reccoBooks {
+      author {
+        born
+        name
+        id
+        bookCount
+      }
+      id
+      genres
+      published
+      title
+    }
+  }
 `;
 
 export const ALL_BOOKS = gql`
