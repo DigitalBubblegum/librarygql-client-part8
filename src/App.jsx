@@ -26,6 +26,7 @@ function App() {
   const client = useApolloClient()
   useSubscription(BOOK_ADDED,{
     onData: ({data}) => {
+      console.log('completed exercise 8.24')
       console.log('running subscription')
       console.log('subscription',data)
       notificationHandler(data.data.bookAdded.title)
