@@ -8,7 +8,7 @@ import AddBook from './components/AddBook'
 import LoginForm from './components/LoginForm'
 import Reccomendations from './components/Reccomendations'
 import Notification from './components/Notification'
-import { BOOK_ADDED } from './queries'
+import { ALL_BOOKS, BOOK_ADDED } from './queries'
 
 const padding = {
     padding: 5
@@ -25,11 +25,16 @@ function App() {
   }
   const client = useApolloClient()
   useSubscription(BOOK_ADDED,{
-    onData: ({data}) => {
+    onData: ({data,client}) => {
       console.log('completed exercise 8.24')
       console.log('running subscription')
       console.log('subscription',data)
       notificationHandler(data.data.bookAdded.title)
+      client.cache.updateQuery({query:ALL_BOOKS},({allBooks})=>{
+        return{
+          allBooks: allBooks.concat(data.data.bookAdded)
+        }
+      })
     },
     onError:(error) =>{
       console.log(error)
