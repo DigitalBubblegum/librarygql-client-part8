@@ -6,8 +6,8 @@ const Books = () => {
     const [booksFilter, setBooksFilter] = useState('all')
     const result = useQuery(ALL_BOOKS)
     const fetchGenre = useQuery(GET_ALL_BOOK_GENRES)
-    console.log(fetchGenre)
-    if (result.loading) {
+    // console.log(fetchGenre)
+    if (result.loading || fetchGenre.loading) {
         return <div>loading...</div>
     }
     const genreList = fetchGenre.data.genreList

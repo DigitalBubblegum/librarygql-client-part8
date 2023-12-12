@@ -11,8 +11,8 @@ const AddBook = () => {
     const [genres, setGenres] = useState([])
     const submit = (event) => {
         event.preventDefault()
-        console.log(event)
-        console.log('clicked submit button')
+        //console.log(event)
+        //console.log('clicked submit button')
         //add createBook here
         const content = {
             title: title,
@@ -22,7 +22,7 @@ const AddBook = () => {
         }
         createBook({variables:content,
             refetchQueries:[{query:ALL_BOOKS},{query:ALL_AUTHORS},{query:GET_ALL_BOOK_GENRES},{query:GET_ALL_BOOK_RECCOMENDATIONS}]},)
-        console.log(content)
+        //console.log(content)
         setTitle('')
         setAuthor('')
         setPublished('')
@@ -30,11 +30,11 @@ const AddBook = () => {
     }
     const addToGenreList = (event) => {
         event.preventDefault()
-        console.log(gen)
+        //console.log(gen)
         let newGenres = [...genres,gen]
-        console.log('clicked add to genre button')
+        //console.log('clicked add to genre button')
         setGenres(newGenres)
-        console.log(genres)
+        //console.log(genres)
         setGen('')
     }
     return (

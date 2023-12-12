@@ -93,3 +93,21 @@ export const LOGIN = gql`
     }
   }
 `
+
+const BOOK_DETAILS = gql`
+fragment BookDetails on Books{
+  author{
+    name
+  }
+  title
+  genres
+}`
+
+export const BOOK_ADDED = gql`
+subscription {
+  bookAdded{
+    ...BookDetails
+  }
+}
+${BOOK_DETAILS}
+`
